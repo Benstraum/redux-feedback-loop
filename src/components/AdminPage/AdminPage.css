@@ -20,9 +20,10 @@
     padding: 8px;
 }
 
-.AdminPage tr:nth-child(even){background-color: #f2f2f2}
+.AdminPage tr:nth-child(even){background-color: #00b8be}
 
 .AdminPage th {
-    background-color: #332b50;
-    color: rgb(241, 241, 241);
+    background-color: #38e8ff;
+    color: black
 }
+
