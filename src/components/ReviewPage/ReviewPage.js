@@ -13,7 +13,12 @@ class ReviewPage extends Component {
         feeling:'',
         understanding:'',
         support:'',
-        comment:''
+        comment:'',
+        editFeel:true,
+        editUnderstanding:true,
+        editSupport:true,
+        editComment:true
+        
     }
     finishForm = () => {
         axios({
@@ -36,18 +41,26 @@ class ReviewPage extends Component {
             [input]: event.target.value
         });
     }
-    editButtonHandle = (buttontype, stateInfo) => {
+    editButtonHandle = (buttontype, stateInfo, stateKey) => {
         this.props.dispatch({
             type:buttontype,
             payload: stateInfo
         })
+    
         this.setState({
-            feeling:'',
-            understanding:'',
-            support:'',
-            comment:''
+            editFeel:true,
+            editUnderstanding:true,
+            editSupport:true,
+            editComment:true
         })
 console.log(this.props.feedback)
+console.log(this.state)
+    }
+    toggleBool =(stateKey, bool)=>{
+        this.setState({
+            ...this.state,
+        [stateKey]: bool
+        })
     }
     render() {
         let feeling = this.props.feedback.feeling,
@@ -59,23 +72,24 @@ console.log(this.props.feedback)
                     <h1>Double check your feedback please :)</h1>
                     <div className='reviewlist'>
                         <ul>
-                            <li>Feelings: {feeling}</li>
-                            <li> <Textfield id="outlined-basic" label={"change answer"} type="number" onChange={(event) => this.onInputChange(event, 'feeling')} />
-                                <Button variant="outlined" color="secondary" onClick={() =>this.editButtonHandle('SET_FEELING', this.state.feeling)}>Edit</Button>
-                            </li>
-                            <li>Understanding: {understanding}</li>
-                            <li>  <Textfield id="outlined-basic" label="change answer" type="number" onChange={(event) => this.onInputChange(event, 'understanding')} />
-                                <Button variant="outlined" color="secondary" onClick={() =>this.editButtonHandle('SET_UNDERSTANDING', this.state.understanding)}>Edit</Button>
-                            </li>
-                            <li>Support: {support}</li>
-                            <li> <Textfield id="outlined-basic" label="change answer" type="number" onChange={(event) => this.onInputChange(event, 'support')} />
-                                <Button variant="outlined" color="secondary" onClick={() =>this.editButtonHandle('SET_SUPPORT', this.state.support)}>Edit</Button >
-                            </li>
-                            <li>Comments: {this.props.feedback.comment}</li>
-                            <li> <Textfield id="outlined-basic" label="change answer" type="text" onChange={(event) => this.onInputChange(event, 'comment')} />
-                                <Button variant="outlined" color="secondary" onClick={() => this.editButtonHandle('SET_COMMENT', this.state.comment)}>Edit</Button>
-                            </li>
+                            {this.state.editFeel ? <li>Feelings: {feeling}<Button variant="outlined" color="primary" onClick={() =>this.toggleBool('editFeel', false)}>edit</Button></li> :
+                            <li> <Textfield id="outlined-basic" label={"change answer"} type="number" onChange={(event) => this.onInputChange(event, 'feeling', 'editFeel')} />
+                                <Button variant="outlined" color="secondary" onClick={() =>this.editButtonHandle('SET_FEELING', this.state.feeling)}>submit change</Button>
+                            </li>}
+                            {this.state.editUnderstanding ? <li>Understanding: {understanding}<Button variant="outlined" color="primary" onClick={() =>this.toggleBool('editUnderstanding', false)}>edit</Button></li> :
+                            <li>  <Textfield id="outlined-basic" label="change answer" type="number" onChange={(event) => this.onInputChange(event, 'understanding', 'editUnderstanding')} />
+                                <Button variant="outlined" color="secondary" onClick={() =>this.editButtonHandle('SET_UNDERSTANDING', this.state.understanding)}>submit change</Button>
+                            </li>}
+                            {this.state.editSupport ? <li>Support: {support}<Button variant="outlined" color="primary" onClick={() =>this.toggleBool('editSupport', false)}>edit</Button></li> :
+                            <li> <Textfield id="outlined-basic" label="change answer" type="number" onChange={(event) => this.onInputChange(event, 'support', 'editSupport')} />
+                                <Button variant="outlined" color="secondary" onClick={() =>this.editButtonHandle('SET_SUPPORT', this.state.support)}>submit change</Button >
+                            </li>}
+                            {this.state.editComment ?<li>Comments: {this.props.feedback.comment}<Button variant="outlined" color="primary" onClick={() =>this.toggleBool('editComment', false)}>edit</Button></li> :
+                            <li> <Textfield id="outlined-basic" label="change answer" type="text" onChange={(event) => this.onInputChange(event, 'comment', 'editComment')} />
+                                <Button variant="outlined" color="secondary" onClick={() => this.editButtonHandle('SET_COMMENT', this.state.comment)}>submit change</Button>
+                            </li>}
                         </ul>
+                        <br></br>
                         {feeling === '' || understanding === '' || support === '' ? <Button disabled variant="outlined" color="secondary">Submit Response</Button> : <Button variant="outlined" color="primary" onClick={this.finishForm}>Submit Response</Button>}
                     </div>
                 </Grid>
