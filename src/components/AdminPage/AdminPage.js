@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import './AdminPage.css'
-
+//sweetalert
+import Swal from 'sweetalert2'
 //mat ui
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,6 +12,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+
 class AdminPage extends Component {
 
     state = {
@@ -18,9 +21,9 @@ class AdminPage extends Component {
     }
 
     componentDidMount() {
-        this.getAdminOrders()
+        this.getFeedback()
     }
-    getAdminOrders = () => {
+    getFeedback = () => {
         axios({
             method: "GET",
             url: '/feedback'
@@ -32,6 +35,39 @@ class AdminPage extends Component {
             })
             .catch(err => console.log('err GET', err));
     }
+    deleteButtonHandler = (object) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'This will permanently delete this feedback',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it'
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    'Deleted!',
+                    "Poof, it's gone",
+                    "success",
+                    axios.delete(`/feedback/${object}`)
+                        .then(response => {
+                            console.log('delete response', response)
+                            this.getFeedback()
+                        })
+                        .catch(error => {
+                            console.log('error in delete', error)
+                        })
+                )
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelled',
+                    'Feedback not deleted',
+                    'error'
+                )
+            }
+        })
+
+    }//END DELETE func
 
     //this contains the table that will pull information down from the admin reducer
     render() {
@@ -46,6 +82,7 @@ class AdminPage extends Component {
                                 <TableCell align="right"><b>Understanding</b></TableCell>
                                 <TableCell align="right"><b>Support</b></TableCell>
                                 <TableCell align="right"><b>Comments</b></TableCell>
+                                <TableCell align="right"><b></b></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -58,6 +95,7 @@ class AdminPage extends Component {
                                     <TableCell align="left">{feedback.understanding}</TableCell>
                                     <TableCell align="left">{feedback.support}</TableCell>
                                     <TableCell align="left">{feedback.comments}</TableCell>
+                                    <TableCell align="left"><Button variant="contained" color="secondary" onClick={() =>this.deleteButtonHandler(feedback.id)}>Delete</Button></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
