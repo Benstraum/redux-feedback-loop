@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-
+import { connect } from 'react-redux'
 class CommentPage extends Component{
     state={
         comment:''
@@ -10,6 +10,10 @@ class CommentPage extends Component{
         });
     }
     onNextClick = () => {
+        this.props.dispatch({
+            type:"SET_COMMENT",
+            payload:this.state.comment
+        })
         this.props.history.push("/Review")
     }
     render(){
@@ -23,4 +27,4 @@ class CommentPage extends Component{
         )
     }
 }
-export default CommentPage;
+export default connect()(CommentPage);

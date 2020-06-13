@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-
+import { connect } from 'react-redux'
 class FeelingPage extends Component{
     state={
-        feeling:''
+        feeling:null
     }
     onInputChange =(event, input) => {
         this.setState({
@@ -10,6 +10,10 @@ class FeelingPage extends Component{
         });
     }
     onNextClick = () => {
+        this.props.dispatch({
+            type:"SET_FEELING",
+            payload:this.state.feeling
+        })
         this.props.history.push("/howIsYourCourseWork")
     }
     render(){
@@ -23,4 +27,4 @@ class FeelingPage extends Component{
         )
     }
 }
-export default FeelingPage;
+export default connect()(FeelingPage);

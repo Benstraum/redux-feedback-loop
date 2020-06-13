@@ -1,6 +1,6 @@
 //important modules
 import React, { Component } from 'react';
-import axios from 'axios';
+
 
 //routing
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
@@ -25,19 +25,19 @@ class App extends Component {
             <Router>
         <ol className="nav">
           
-              <li className="navLi">
+              <li >
                 <Link to="/">Home</Link>
               </li>
-              <li className="navLi">
+              <li >
                 <Link to="/howAreWeFeeling">Feelings?</Link>
               </li>
-              <li className="navLi">
+              <li >
                 <Link to="/howIsYourCourseWork">Course Material</Link>
               </li>
               <li >
                 <Link to="/weAreHereForYou">Support</Link>
               </li>
-              <li className="navLi">
+              <li >
                 <Link to="/wantToAddAnything">Additional Comments</Link>
               </li>
               <li >
