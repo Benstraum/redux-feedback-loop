@@ -22,6 +22,7 @@ class FeelingPage extends Component {
                 type: "SET_FEELING",
                 payload: this.state.feeling
             })
+            this.props.iNeedInfo()
             this.props.history.push("/howIsYourCourseWork")
         } else {
             alert('pls tell me your feelings in a numeric value')
@@ -33,9 +34,9 @@ class FeelingPage extends Component {
             <Paper elevation={5} >
                 <div className="paper">
                     <Grid container justify="center" spacing={2}>
-                   <h1>How are you feeling today?</h1>
-                    <Textfield id="standard-basic" label="1-10" type="number" onChange={(event) => this.onInputChange(event, 'feeling')} />
-                    <Button variant="outlined" color="primary" onClick={this.onNextClick}>Next -></Button>
+                        <h1>How are you feeling today?</h1>
+                        <Textfield id="standard-basic" label="1-10" type="number" onChange={(event) => this.onInputChange(event, 'feeling')} />
+                        <Button variant="outlined" color="primary" onClick={this.onNextClick}>Next -></Button>
                     </Grid>
                 </div>
             </Paper>

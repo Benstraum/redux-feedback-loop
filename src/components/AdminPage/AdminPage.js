@@ -95,7 +95,7 @@ class AdminPage extends Component {
                                     <TableCell align="left">{feedback.understanding}</TableCell>
                                     <TableCell align="left">{feedback.support}</TableCell>
                                     <TableCell align="left">{feedback.comments}</TableCell>
-                                    <TableCell align="left"><Button variant="contained" color="secondary" onClick={() =>this.deleteButtonHandler(feedback.id)}>Delete</Button></TableCell>
+                                    <TableCell align="left"><Button variant="contained" color="secondary" onClick={() => this.deleteButtonHandler(feedback.id)}>Delete</Button></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
