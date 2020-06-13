@@ -1,9 +1,22 @@
 li{
  list-style-type: none;
  text-align: left;
- padding: 5px;
-}
+ padding:10px;
 
- .reviewlist button{
+}
+.reviewlist{
+    width: 400px;
+}
+ .reviewlist ul li button{
     float:  right;
+}
+.MuiButton-label{
+   margin-left: auto;
+   margin-right: auto;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
 }

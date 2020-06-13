@@ -9,6 +9,12 @@ import Textfield from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 class ReviewPage extends Component {
+    state={
+        feeling:'',
+        understanding:'',
+        support:'',
+        comment:''
+    }
     finishForm = () => {
         axios({
             method: "POST",
@@ -25,22 +31,52 @@ class ReviewPage extends Component {
             .catch(err => console.log('this is err in post', err))
         //then inser some modal thing
     }
+    onInputChange = (event, input) => {
+        this.setState({
+            [input]: event.target.value
+        });
+    }
+    editButtonHandle = (buttontype, stateInfo) => {
+        this.props.dispatch({
+            type:buttontype,
+            payload: stateInfo
+        })
+        this.setState({
+            feeling:'',
+            understanding:'',
+            support:'',
+            comment:''
+        })
+console.log(this.props.feedback)
+    }
     render() {
         let feeling = this.props.feedback.feeling,
             understanding = this.props.feedback.understanding,
             support = this.props.feedback.support
         return (<Paper elevation={5} >
             <div className="paper">
-                <Grid container justify="center" spacing={2}>
+                <Grid container direction="row" alignItems="center" justify="center" spacing={2}>
                     <h1>Double check your feedback please :)</h1>
                     <div className='reviewlist'>
-                    <ul>
-                        <li>Feelings: {feeling} <button onClick={() => this.props.history.push('/howAreWeFeeling')}>Edit</button></li>
-                        <li>Understanding: {understanding} <button onClick={() => this.props.history.push('/howIsYourCourseWork')}>Edit</button></li>
-                        <li>Support: {support} <button onClick={() => this.props.history.push('/weAreHereForYou')}>Edit</button ></li>
-                        <li>Comments: {this.props.feedback.comment} <button onClick={() => this.props.history.push('/wantToAddAnything')}>Edit</button></li>
-                    </ul>
-                    {feeling === '' || understanding === '' || support === '' ? <> <p>You actually have to fill out the form </p><Button disabled variant="outlined" color="secondary" onClick={this.finishForm}>Submit Response</Button> </> : <Button variant="outlined" color="primary" onClick={this.finishForm}>Submit Response</Button>}
+                        <ul>
+                            <li>Feelings: {feeling}</li>
+                            <li> <Textfield id="outlined-basic" label={"change answer"} type="number" onChange={(event) => this.onInputChange(event, 'feeling')} />
+                                <Button variant="outlined" color="secondary" onClick={() =>this.editButtonHandle('SET_FEELING', this.state.feeling)}>Edit</Button>
+                            </li>
+                            <li>Understanding: {understanding}</li>
+                            <li>  <Textfield id="outlined-basic" label="change answer" type="number" onChange={(event) => this.onInputChange(event, 'understanding')} />
+                                <Button variant="outlined" color="secondary" onClick={() =>this.editButtonHandle('SET_UNDERSTANDING', this.state.understanding)}>Edit</Button>
+                            </li>
+                            <li>Support: {support}</li>
+                            <li> <Textfield id="outlined-basic" label="change answer" type="number" onChange={(event) => this.onInputChange(event, 'support')} />
+                                <Button variant="outlined" color="secondary" onClick={() =>this.editButtonHandle('SET_SUPPORT', this.state.support)}>Edit</Button >
+                            </li>
+                            <li>Comments: {this.props.feedback.comment}</li>
+                            <li> <Textfield id="outlined-basic" label="change answer" type="text" onChange={(event) => this.onInputChange(event, 'comment')} />
+                                <Button variant="outlined" color="secondary" onClick={() => this.editButtonHandle('SET_COMMENT', this.state.comment)}>Edit</Button>
+                            </li>
+                        </ul>
+                        {feeling === '' || understanding === '' || support === '' ? <Button disabled variant="outlined" color="secondary">Submit Response</Button> : <Button variant="outlined" color="primary" onClick={this.finishForm}>Submit Response</Button>}
                     </div>
                 </Grid>
             </div>
