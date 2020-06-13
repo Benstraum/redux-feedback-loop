@@ -22,7 +22,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <header className="App-header">
+            <h1 className="App-title">Feedback!</h1>
+            <h4><i>Don't forget it!</i></h4>
+          </header>
             <Router>
+              
         <ol className="nav">
           
               <li >
@@ -42,9 +47,6 @@ class App extends Component {
               </li>
               <li >
                 <Link to="/Review">Review</Link>
-              </li>
-              <li >
-                <Link to="/Admin">Admin REMOVE LATER</Link>
               </li>
             </ol>
         {/* will need to add more routes for each new component */}
