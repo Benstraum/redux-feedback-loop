@@ -9,7 +9,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
-
+const adminRouter = require('./routes/feedback.router');
+app.use('/feedback', adminRouter);
 
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {

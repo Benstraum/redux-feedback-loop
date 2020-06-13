@@ -12,9 +12,11 @@ import UnderstandingPage from '../UnderstandingPage/UnderstandingPage'
 import SupportPage from '../SupportPage/SupportPage'
 import CommentPage from '../CommentPage/CommentPage'
 import ReviewPage from '../ReviewPage/ReviewPage'
+import AdminPage from '../AdminPage/AdminPage';
 
 //styles
 import './App.css';
+
 
 class App extends Component {
   render() {
@@ -39,7 +41,10 @@ class App extends Component {
                 <Link to="/wantToAddAnything">Additional Comments</Link>
               </li>
               <li >
-                <Link to="/ReviewPage">Review</Link>
+                <Link to="/Review">Review</Link>
+              </li>
+              <li >
+                <Link to="/Admin">Admin REMOVE LATER</Link>
               </li>
             </ol>
         {/* will need to add more routes for each new component */}
@@ -48,7 +53,8 @@ class App extends Component {
         <Route  path="/howIsYourCourseWork" component={UnderstandingPage}/>
         <Route  path="/weAreHereForYou" component={SupportPage}/>
         <Route  path="/wantToAddAnything" component={CommentPage}/>
-        <Route path="/ReviewPage" component={ReviewPage}/>
+        <Route path="/Review" component={ReviewPage}/>
+        <Route path="/Admin" component={AdminPage} />
         </Router>
       </div>
     );

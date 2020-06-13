@@ -1,0 +1,28 @@
+.AdminPage table{
+    margin-left:auto ;
+    margin-right: auto;
+    border-collapse: collapse;
+    width: 80%;
+}
+.AdminPage {
+    text-align: center;
+  }
+  
+  .AdminPage header {
+    background-color: #222;
+    height: 70px;
+    padding: 20px;
+    color: white;
+  }
+
+.AdminPage th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+.AdminPage tr:nth-child(even){background-color: #f2f2f2}
+
+.AdminPage th {
+    background-color: #332b50;
+    color: rgb(241, 241, 241);
+}
