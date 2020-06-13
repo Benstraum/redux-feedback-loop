@@ -28,8 +28,8 @@ class App extends Component {
           </header>
             <Router>
               
-        <ol className="nav">
-          
+        {/* commented out for base functionality
+         <ol className="nav">
               <li >
                 <Link to="/">Home</Link>
               </li>
@@ -48,7 +48,7 @@ class App extends Component {
               <li >
                 <Link to="/Review">Review</Link>
               </li>
-            </ol>
+            </ol> */}
         {/* will need to add more routes for each new component */}
         <Route exact path="/" component={HomePage}/>
         <Route  path="/howAreWeFeeling" component={FeelingPage}/>

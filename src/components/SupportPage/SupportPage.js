@@ -1,29 +1,35 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-class SupportPage extends Component{
-    state={
-        support:null
+class SupportPage extends Component {
+    state = {
+        support: null,
+        bool: false
     }
-    onInputChange =(event, input) => {
+    onInputChange = (event, input) => {
         this.setState({
-            [input]: event.target.value
+            [input]: event.target.value,
+            bool:true
         });
     }
     onNextClick = () => {
-        this.props.dispatch({
-            type:"SET_SUPPORT",
-            payload:this.state.support
-        })
-        this.props.history.push("/wantToAddAnything")
+        if (this.state.bool) {
+            this.props.dispatch({
+                type: "SET_SUPPORT",
+                payload: this.state.support
+            })
+            this.props.history.push("/wantToAddAnything")
+        } else {
+            alert('pls tell me your feelings of support in a numeric value')
+        }
     }
-    render(){
-        return(
+    render() {
+        return (
             <div>
-            <h1>Are you feeling supported?</h1>
-            <input required type="number" onChange={(event)=>this.onInputChange(event, 'support')}/>
+                <h1>Are you feeling supported?</h1>
+                <input required type="number" onChange={(event) => this.onInputChange(event, 'support')} />
 
-            <button onClick={this.onNextClick}>Next -></button>
+                <button onClick={this.onNextClick}>Next -></button>
             </div>
         )
     }
