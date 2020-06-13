@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers } from "redux";
 import { Provider } from 'react-redux'
 
-const feedbackReducer = (state = { feeling: null, understanding: null, support: null, comment: null }, action) => {
+const feedbackReducer = (state = { feeling: '', understanding: '', support: '', comment: '' }, action) => {
     switch (action.type) {
         case 'SET_FEELING':
             state.feeling = action.payload
@@ -21,6 +21,9 @@ const feedbackReducer = (state = { feeling: null, understanding: null, support: 
         case 'SET_COMMENT':
             state.comment = action.payload
             return state
+            case 'RESET':
+                state = { feeling: '', understanding: '', support: '', comment: '' }
+                return state
         default:
             return state
     }

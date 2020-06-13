@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+//style
+import Paper from '@material-ui/core/Paper';
+import Textfield from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 class SupportPage extends Component {
     state = {
-        support: null,
+        support: '',
         bool: false
     }
     onInputChange = (event, input) => {
         this.setState({
             [input]: event.target.value,
-            bool:true
+            bool: true
         });
     }
     onNextClick = () => {
@@ -25,13 +29,21 @@ class SupportPage extends Component {
     }
     render() {
         return (
-            <div>
-                <h1>Are you feeling supported?</h1>
-                <input required type="number" onChange={(event) => this.onInputChange(event, 'support')} />
-
-                <button onClick={this.onNextClick}>Next -></button>
-            </div>
+            <Paper elevation={5} >
+                <div className="paper">
+                <Grid container justify="center" spacing={2}>
+                    <h1>Are you feeling supported?</h1>
+                    <Textfield id="standard-basic" label="1-10" type="number" onChange={(event) => this.onInputChange(event, 'support')} />
+                    <Button variant="outlined" color="primary" onClick={this.onNextClick}>Next -></Button>
+                    </Grid>
+                </div>
+            </Paper>
         )
     }
 }
-export default connect()(SupportPage);
+const putReduxStateOnProps = (reduxState) => {
+    return {
+        feedback: reduxState.feedbackReducer
+    }
+}
+export default connect(putReduxStateOnProps)(SupportPage);

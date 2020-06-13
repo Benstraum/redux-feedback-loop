@@ -1,8 +1,13 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-class CommentPage extends Component{
-    state={
-        comment:''
+//style
+import Paper from '@material-ui/core/Paper';
+import Textfield from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+class CommentPage extends Component {
+    state = {
+        comment: ''
     }
     onInputChange = (event, input) => {
         this.setState({
@@ -11,20 +16,30 @@ class CommentPage extends Component{
     }
     onNextClick = () => {
         this.props.dispatch({
-            type:"SET_COMMENT",
-            payload:this.state.comment
+            type: "SET_COMMENT",
+            payload: this.state.comment
         })
         this.props.history.push("/Review")
     }
-    render(){
-        return(
-            <div>
-            <h1>Any other comments/concerns?</h1>
-            <input onChange={(event)=>this.onInputChange(event, 'comment')}/>
-
-            <button onClick={this.onNextClick}>Next -></button>
-            </div>
+    render() {
+        return (
+            <Paper elevation={5} >
+                <div className="paper">
+                <Grid container justify="center" spacing={2}>
+                    <h1>Any other comments/concerns?</h1>
+                    <div className="comments">
+                    <Textfield id="standard-multiline-flexible" multiline rowsMax={4} label="Optional comments!" onChange={(event) => this.onInputChange(event, 'comment')} />
+                    <Button variant="outlined" color="primary" onClick={this.onNextClick}>Finish and Review-></Button>
+                    </div>
+                    </Grid>
+                </div>
+            </Paper>
         )
     }
 }
-export default connect()(CommentPage);
+const putReduxStateOnProps = (reduxState) => {
+    return {
+        feedback: reduxState.feedbackReducer
+    }
+}
+export default connect(putReduxStateOnProps)(CommentPage);

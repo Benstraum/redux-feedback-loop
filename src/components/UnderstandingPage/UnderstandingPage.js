@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+//style
+import Paper from '@material-ui/core/Paper';
+import Textfield from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 class UnderstandingPage extends Component {
     state = {
-        understanding: null,
+        understanding: '',
         bool: false
     }
     onInputChange = (event, input) => {
         this.setState({
             [input]: event.target.value,
-            bool:true
+            bool: true
         });
     }
     onNextClick = () => {
@@ -25,13 +29,21 @@ class UnderstandingPage extends Component {
     }
     render() {
         return (
-            <div>
-                <h1>How are you doing with your course material?</h1>
-                <input required type="number" onChange={(event) => this.onInputChange(event, 'understanding')} />
-
-                <button onClick={this.onNextClick}>Next -></button>
-            </div>
+            <Paper elevation={5} >
+                <div className="paper">
+                <Grid container justify="center" spacing={2}>
+                    <h1>How are you doing with your course material?</h1>
+                    <Textfield id="standard-basic" label="1-10" type="number" onChange={(event) => this.onInputChange(event, 'understanding')} />
+                    <Button variant="outlined" color="primary" onClick={this.onNextClick}>Next -></Button>
+                    </Grid>
+                </div>
+            </Paper>
         )
     }
 }
-export default connect()(UnderstandingPage);
+const putReduxStateOnProps = (reduxState) => {
+    return {
+        feedback: reduxState.feedbackReducer
+    }
+}
+export default connect(putReduxStateOnProps)(UnderstandingPage);
