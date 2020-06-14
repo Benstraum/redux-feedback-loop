@@ -2,7 +2,7 @@
     margin-left:auto ;
     margin-right: auto;
     border-collapse: collapse;
-    width:75%;
+    width: 75%;
 }
 .AdminPage {
     text-align: center;
@@ -20,10 +20,16 @@
     padding: 8px;
 }
 
-.AdminPage tr:nth-child(even){background-color: #00b8be}
+.AdminPage tr:nth-child(even){ 
+  background-color: #00b8be;
+}
 
 .AdminPage th {
     background-color: #38e8ff;
     color: black
 }
 
+.needHelp{
+  background: red;
+  background-blend-mode: overlay;
+}

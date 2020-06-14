@@ -9,7 +9,6 @@ import Swal from 'sweetalert2'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
@@ -75,11 +74,12 @@ class AdminPage extends Component {
                     <Table className='table' aria-label="customized table">
                         <TableHead>
                             <TableRow>
-                                <TableCell><b>feedback</b></TableCell>
+                                <TableCell ><b>feedback</b></TableCell>
                                 <TableCell align="right"><b>Feeling</b></TableCell>
                                 <TableCell align="right"><b>Understanding</b></TableCell>
                                 <TableCell align="right"><b>Support</b></TableCell>
                                 <TableCell align="right"><b>Comments</b></TableCell>
+                                <TableCell align="right"><b>Mark for help</b></TableCell>
                                 <TableCell align="right"><b></b></TableCell>
                             </TableRow>
                         </TableHead>
