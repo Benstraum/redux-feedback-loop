@@ -39,6 +39,11 @@ class App extends Component {
       review:true
     })
   }
+  hideReviewPage=()=>{
+    this.setState({
+      review:false
+    })
+  }
   render() {
     return (
       
@@ -88,7 +93,7 @@ class App extends Component {
           <Route path="/howIsYourCourseWork" component={(props)=><UnderstandingPage {...props} iNeedInfo={this.iNeedInfo}/>} />
           <Route path="/weAreHereForYou" component={(props)=><SupportPage {...props} iNeedInfo={this.iNeedInfo}/>} />
           <Route path="/wantToAddAnything" component={(props)=><CommentPage {...props} reviewPage={this.reviewPage} iNeedInfo={this.iNeedInfo}/>} />
-          <Route path="/Review" component={ReviewPage} />
+          <Route path="/Review" component={(props)=><ReviewPage {...props} hideReviewPage={this.hideReviewPage}/>}  />
           <Route path="/Finish" component={FinishPage} />
           <Route path="/Admin" component={AdminPage} />
         </Router>

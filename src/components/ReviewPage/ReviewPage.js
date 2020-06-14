@@ -35,7 +35,7 @@ class ReviewPage extends Component {
                 this.props.history.push('/Finish');
             })
             .catch(err => console.log('this is err in post', err))
-        //then inser some modal thing
+        this.props.hideReviewPage();
     }
     onInputChange = (event, input) => {
         this.setState({
