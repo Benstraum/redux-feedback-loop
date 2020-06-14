@@ -71,6 +71,7 @@ class AdminPage extends Component {
     render() {
         return (
             <div className="AdminPage"> 
+            <h3>Make sure we mark down students in need / Help students flagged with an orange background</h3>
                     <Table className='table' aria-label="customized table">
                         <TableHead>
                             <TableRow>

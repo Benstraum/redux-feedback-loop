@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
+import { IconButton } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 class AdminPageItem extends Component {
     state={
@@ -28,10 +30,10 @@ class AdminPageItem extends Component {
                     <TableCell align="left">{this.props.feedback.support}</TableCell>
                     <TableCell align="left">{this.props.feedback.comments}</TableCell>
                     <TableCell align="left"><Button variant="outlined" size="small" color="primary" onClick={() => this.toggleHelp(this.props.feedback.id)} >Flag help</Button></TableCell>
-                    <TableCell align="left"><Button variant="contained" color="secondary" onClick={() => this.props.deleteButtonHandler(this.props.feedback.id)}>Delete</Button></TableCell>
+                    <TableCell align="left"><IconButton variant="contained" color="secondary" onClick={() => this.props.deleteButtonHandler(this.props.feedback.id)}> <DeleteIcon /></IconButton></TableCell>
                 </TableRow>
                 :   //made inline style cause I couldn't find a way to override it in css 
-                <TableRow style={{backgroundColor: 'red'}} className="needHelp" key={this.props.feedback.id}>
+                <TableRow style={{backgroundColor: 'orange'}} className="needHelp" key={this.props.feedback.id}>
                     <TableCell scope="row">
                         response: #{this.props.feedback.id}
                     </TableCell>
@@ -40,7 +42,7 @@ class AdminPageItem extends Component {
                     <TableCell align="left">{this.props.feedback.support}</TableCell>
                     <TableCell align="left">{this.props.feedback.comments}</TableCell>
                     <TableCell align="left"><Button variant="outlined" size="small" color="primary" onClick={() => this.toggleHelp(this.props.feedback.id)} >Flag help</Button></TableCell>
-                    <TableCell align="left"><Button variant="contained" color="secondary" onClick={() => this.props.deleteButtonHandler(this.props.feedback.id)}>Delete</Button></TableCell>
+                    <TableCell align="left"><IconButton variant="contained" color="secondary" onClick={() => this.props.deleteButtonHandler(this.props.feedback.id)}> <DeleteIcon /></IconButton></TableCell>
                 </TableRow>}
             </>
         )
