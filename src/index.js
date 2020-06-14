@@ -10,13 +10,31 @@ import { Provider } from 'react-redux'
 const feedbackReducer = (state = { feeling: '', understanding: '', support: '', comment: '' }, action) => {
     switch (action.type) {
         case 'SET_FEELING':
-            state.feeling = action.payload
+            if (action.payload > 10) {
+                state.feeling = 10
+            } else if (action.payload < 1) {
+                state.feeling = 1
+            } else {
+                state.feeling = action.payload
+            }
             return state
         case 'SET_UNDERSTANDING':
-            state.understanding = action.payload
+            if (action.payload > 10) {
+                state.understanding = 10
+            } else if (action.payload < 1) {
+                state.understanding = 1
+            } else {
+                state.understanding = action.payload
+            }
             return state
         case 'SET_SUPPORT':
-            state.support = action.payload
+            if (action.payload > 10) {
+                state.support = 10
+            } else if (action.payload < 1) {
+                state.support = 1
+            } else {
+                state.support = action.payload
+            }
             return state
         case 'SET_COMMENT':
             state.comment = action.payload
