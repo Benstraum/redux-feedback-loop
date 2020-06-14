@@ -29,7 +29,6 @@ class FeelingPage extends Component {
         }
     }
     render() {
-
         return (
             <Paper elevation={5} >
                 <div className="paper">

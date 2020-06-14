@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import './AdminPage.css'
+import AdminPageItem from '../AdminPageItem/AdminPageItem'
 //sweetalert
 import Swal from 'sweetalert2'
 //mat ui
@@ -11,8 +12,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
+
 
 class AdminPage extends Component {
 
@@ -68,12 +68,10 @@ class AdminPage extends Component {
         })
 
     }//END DELETE func
-
     //this contains the table that will pull information down from the admin reducer
     render() {
         return (
-            <div className="AdminPage">
-                <TableContainer component={Paper}>
+            <div className="AdminPage"> 
                     <Table className='table' aria-label="customized table">
                         <TableHead>
                             <TableRow>
@@ -86,21 +84,11 @@ class AdminPage extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {this.state.feedback.map(feedback => (
-                                <TableRow key={feedback.id}>
-                                    <TableCell scope="row">
-                                        response: #{feedback.id}
-                                    </TableCell>
-                                    <TableCell align="left">{feedback.feeling}</TableCell>
-                                    <TableCell align="left">{feedback.understanding}</TableCell>
-                                    <TableCell align="left">{feedback.support}</TableCell>
-                                    <TableCell align="left">{feedback.comments}</TableCell>
-                                    <TableCell align="left"><Button variant="contained" color="secondary" onClick={() => this.deleteButtonHandler(feedback.id)}>Delete</Button></TableCell>
-                                </TableRow>
-                            ))}
+                            {this.state.feedback.map(feedback => 
+                                <AdminPageItem key={feedback.id} feedback={feedback} deleteButtonHandler={this.deleteButtonHandler}/>
+                            )}
                         </TableBody>
                     </Table>
-                </TableContainer>
             </div>
         )
     }
