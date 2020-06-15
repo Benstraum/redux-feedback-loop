@@ -72,3 +72,9 @@ body{
 .navBar{
   width: 100%;
 }
+.selectResponse{
+  width:100%;
+}
+.MuiSelect-root{
+  border: outline black 1 px;
+}

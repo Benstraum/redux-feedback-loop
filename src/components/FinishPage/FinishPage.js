@@ -13,7 +13,7 @@ class FinishPage extends Component {
             <Paper elevation={5} >
                 <div className="paper">
                     <h1>Thank you for your input!</h1>
-                    <Button variant="contained" color="secondary" onClick={() => this.props.history.push('/')} >Go Again?</Button>
+                    <Button variant="contained" color="secondary" onClick={() => this.props.history.push('/')} >Give more feedback?</Button>
                 </div>
             </Paper>
 

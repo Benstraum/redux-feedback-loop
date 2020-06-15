@@ -8,6 +8,10 @@ import Paper from '@material-ui/core/Paper';
 import Textfield from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 class ReviewPage extends Component {
     state = {
         feeling: '',
@@ -49,13 +53,12 @@ class ReviewPage extends Component {
         })
 
         this.setState({
+            ...this.state,
             editFeel: true,
             editUnderstanding: true,
             editSupport: true,
             editComment: true
         })
-        console.log(this.props.feedback)
-        console.log(this.state)
     }
     toggleBool = (stateKey, bool) => {
         this.setState({
@@ -76,19 +79,43 @@ class ReviewPage extends Component {
                             {this.state.editFeel ?
                                 <li>Feelings: {feeling}<Button variant="outlined" color="primary" onClick={() => this.toggleBool('editFeel', false)}>edit</Button></li>
                                 :
-                                <li> <Textfield  id="outlined-basic" label={"change answer"} type="number" onChange={(event) => this.onInputChange(event, 'feeling', 'editFeel')} />
+                                 <li>   <InputLabel id="demo-simple-select-label">Feelings</InputLabel>
+                                 <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.feeling} onChange={(event) => this.onInputChange(event, 'feeling', 'editFeel')}>
+                                     <MenuItem value={1}>Very Bad</MenuItem>
+                                     <MenuItem value={2}>Bad</MenuItem>
+                                     <MenuItem value={3}>Ok</MenuItem>
+                                     <MenuItem value={4}>Good</MenuItem>
+                                     <MenuItem value={5}>Very Good</MenuItem>
+                                 </Select>
+                                {/* <Textfield  id="outlined-basic" label={"change answer"} type="number" onChange={(event) => this.onInputChange(event, 'feeling', 'editFeel')} /> */}
                                     <Button variant="outlined" color="secondary" onClick={() => this.editButtonHandle('SET_FEELING', this.state.feeling)}>submit change</Button>
                                 </li>}
                             {this.state.editUnderstanding ?
                                 <li>Understanding: {understanding}<Button variant="outlined" color="primary" onClick={() => this.toggleBool('editUnderstanding', false)}>edit</Button></li>
                                 :
-                                <li>  <Textfield min='0' max='10' id="outlined-basic" label="change answer" type="number" onChange={(event) => this.onInputChange(event, 'understanding', 'editUnderstanding')} />
+                                <li> <InputLabel id="demo-simple-select-label">Understanding</InputLabel>
+                                <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.understanding} onChange={(event) => this.onInputChange(event, 'understanding', 'editUnderstanding')}>
+                                    <MenuItem value={1}>Very Bad</MenuItem>
+                                    <MenuItem value={2}>Bad</MenuItem>
+                                    <MenuItem value={3}>Ok</MenuItem>
+                                    <MenuItem value={4}>Good</MenuItem>
+                                    <MenuItem value={5}>Very Good</MenuItem>
+                                </Select>
+                                     {/* <Textfield min='0' max='10' id="outlined-basic" label="change answer" type="number" onChange={(event) => this.onInputChange(event, 'understanding', 'editUnderstanding')} /> */}
                                     <Button variant="outlined" color="secondary" onClick={() => this.editButtonHandle('SET_UNDERSTANDING', this.state.understanding)}>submit change</Button>
                                 </li>}
                             {this.state.editSupport ?
                                 <li>Support: {support}<Button variant="outlined" color="primary" onClick={() => this.toggleBool('editSupport', false)}>edit</Button></li>
                                 :
-                                <li> <Textfield  id="outlined-basic" label="change answer" type="number" onChange={(event) => this.onInputChange(event, 'support', 'editSupport')} />
+                                <li> <InputLabel id="demo-simple-select-label">Support</InputLabel>
+                                <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.support} onChange={(event) => this.onInputChange(event, 'support', 'editSupport')}>
+                                    <MenuItem value={1}>Very Bad</MenuItem>
+                                    <MenuItem value={2}>Bad</MenuItem>
+                                    <MenuItem value={3}>Ok</MenuItem>
+                                    <MenuItem value={4}>Good</MenuItem>
+                                    <MenuItem value={5}>Very Good</MenuItem>
+                                </Select>
+                                    {/* <Textfield  id="outlined-basic" label="change answer" type="number" onChange={(event) => this.onInputChange(event, 'support', 'editSupport')} /> */}
                                     <Button variant="outlined" color="secondary" onClick={() => this.editButtonHandle('SET_SUPPORT', this.state.support)}>submit change</Button >
                                 </li>}
                             {this.state.editComment ?

@@ -14,8 +14,8 @@ class HomePage extends Component {
 
         return (
             <div className='homeButton'>
-                <h4>For this survey please write a number between 1 and 10 to accurately represent your response
-                    1 being bad and 10 being good
+                <h4>For this survey please choose a response in our dropdown selector that most accurately represents your feelings to the question.
+                    There will be the opportunity for additional comments as well if there's something you would like to communicate to us!
                 </h4>
                 <Button variant="contained" color="primary" onClick={this.onNextClick}>Start your Feedback!</Button>
             </div>

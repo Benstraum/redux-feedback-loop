@@ -2,9 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 //style
 import Paper from '@material-ui/core/Paper';
-import Textfield from '@material-ui/core/TextField';
+// import Textfield from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 class SupportPage extends Component {
     state = {
         support: '',
@@ -33,9 +37,20 @@ class SupportPage extends Component {
             <Paper elevation={5} >
                 <div className="paper">
                     <Grid container justify="center" spacing={2}>
-                        <h1>Are you feeling supported?</h1>
-                        <Textfield id="standard-basic" label="1-10" type="number" onChange={(event) => this.onInputChange(event, 'support')} />
-                        <Button variant="outlined" color="primary" onClick={this.onNextClick}>Next -></Button>
+                        <h1>How are we doing with supporting you?</h1>
+                        <div className='selectResponse'>
+                            <InputLabel id="demo-simple-select-label">Support System</InputLabel>
+                            <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.support} onChange={(event) => this.onInputChange(event, 'support')}>
+                                <MenuItem value={1}>Very Bad</MenuItem>
+                                <MenuItem value={2}>Bad</MenuItem>
+                                <MenuItem value={3}>Ok</MenuItem>
+                                <MenuItem value={4}>Good</MenuItem>
+                                <MenuItem value={5}>Very Good</MenuItem>
+                            </Select>
+
+                            {/* <Textfield id="standard-basic" label="1-10" type="number" onChange={(event) => this.onInputChange(event, 'support')} /> */}
+                            <Button variant="outlined" color="primary" onClick={this.onNextClick}>Next -></Button>
+                        </div>
                     </Grid>
                 </div>
             </Paper>
