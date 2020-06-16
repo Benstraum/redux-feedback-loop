@@ -65,23 +65,23 @@ class App extends Component {
                 <Link to="/">Home</Link>
               </li>
 
-              {this.props.feedback.feeling === '' ? <></> :
+              {this.props.feedback.feeling &&
                 <li >
                   <Link to="/howAreWeFeeling">Feelings?</Link>
                 </li>}
-              {this.props.feedback.understanding === '' ? <></> :
+              {this.props.feedback.understanding &&
                 <li>
                   <Link to="/howIsYourCourseWork">Understanding</Link>
                 </li>}
-              {this.props.feedback.support === '' ? <></> :
+              {this.props.feedback.support &&
                 <li >
                   <Link to="/weAreHereForYou">Support</Link>
                 </li>}
-              {this.props.feedback.support === '' ? <></> :
+              {this.props.feedback.support &&
                 <li >
                   <Link to="/wantToAddAnything">Comments</Link>
                 </li>}
-              {this.state.review === false ? <></> :
+              {this.state.review &&
                 <li>
                   <Link to="/Review">Review</Link>
                 </li>}

@@ -39,7 +39,9 @@ class FeelingPage extends Component {
                         <h1>How are you feeling today?</h1>
                         <div className='selectResponse'>
                             <InputLabel id="demo-simple-select-label">Your Feelings</InputLabel>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.feeling} onChange={(event) => this.onInputChange(event, 'feeling')}>
+                            <Select labelId="demo-simple-select-label" 
+                            id="demo-simple-select" value={this.state.feeling} 
+                            onChange={(event) => this.onInputChange(event, 'feeling')}>
                                 <MenuItem value={1}>Very Bad</MenuItem>
                                 <MenuItem value={2}>Bad</MenuItem>
                                 <MenuItem value={3}>Ok</MenuItem>
@@ -47,7 +49,9 @@ class FeelingPage extends Component {
                                 <MenuItem value={5}>Very Good</MenuItem>
                             </Select>
                             {/* <Textfield  id="standard-basic" label="1-10" type="number" onChange={(event) => this.onInputChange(event, 'feeling')} /> */}
-                            <Button variant="outlined" color="primary" onClick={this.onNextClick}>Next -></Button>
+                            <Button variant="outlined" 
+                            color="primary" 
+                            onClick={this.onNextClick}>Next -></Button>
                         </div>
                     </Grid>
                 </div>

@@ -11,16 +11,15 @@ import Select from '@material-ui/core/Select';
 class UnderstandingPage extends Component {
     state = {
         understanding: '',
-        bool: false
+
     }
     onInputChange = (event, input) => {
         this.setState({
             [input]: event.target.value,
-            bool: true
         });
     }
     onNextClick = () => {
-        if (this.state.bool) {
+        if (this.state.understanding) {
             this.props.dispatch({
                 type: "SET_UNDERSTANDING",
                 payload: this.state.understanding
@@ -39,14 +38,18 @@ class UnderstandingPage extends Component {
                         <h1>How are you doing with your course material?</h1>
                         <div className='selectResponse'>
                             <InputLabel id="demo-simple-select-label">Understanding Material</InputLabel>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.understanding} onChange={(event) => this.onInputChange(event, 'understanding')}>
+                            <Select labelId="demo-simple-select-label" 
+                            id="demo-simple-select" 
+                            value={this.state.understanding} 
+                            onChange={(event) => this.onInputChange(event, 'understanding')}>
                                 <MenuItem value={1}>Very Bad</MenuItem>
                                 <MenuItem value={2}>Bad</MenuItem>
                                 <MenuItem value={3}>Ok</MenuItem>
                                 <MenuItem value={4}>Good</MenuItem>
                                 <MenuItem value={5}>Very Good</MenuItem>
                             </Select>
-                            {/* <Textfield id="standard-basic" label="1-10" type="number" onChange={(event) => this.onInputChange(event, 'understanding')} /> */}
+                            {/* <Textfield id="standard-basic" label="1-10" type="number" onChange={(event) => 
+                                this.onInputChange(event, 'understanding')} /> */}
                             <Button variant="outlined" color="primary" onClick={this.onNextClick}>Next -></Button>
                             </div>
                     </Grid>

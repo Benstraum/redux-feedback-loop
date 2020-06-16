@@ -12,16 +12,16 @@ import Select from '@material-ui/core/Select';
 class SupportPage extends Component {
     state = {
         support: '',
-        bool: false
+
     }
     onInputChange = (event, input) => {
         this.setState({
             [input]: event.target.value,
-            bool: true
+ 
         });
     }
     onNextClick = () => {
-        if (this.state.bool) {
+        if (this.state.support) {
             this.props.dispatch({
                 type: "SET_SUPPORT",
                 payload: this.state.support
@@ -40,7 +40,10 @@ class SupportPage extends Component {
                         <h1>How are we doing with supporting you?</h1>
                         <div className='selectResponse'>
                             <InputLabel id="demo-simple-select-label">Support System</InputLabel>
-                            <Select labelId="demo-simple-select-label" id="demo-simple-select" value={this.state.support} onChange={(event) => this.onInputChange(event, 'support')}>
+                            <Select labelId="demo-simple-select-label" 
+                            id="demo-simple-select" 
+                            value={this.state.support} 
+                            onChange={(event) => this.onInputChange(event, 'support')}>
                                 <MenuItem value={1}>Very Bad</MenuItem>
                                 <MenuItem value={2}>Bad</MenuItem>
                                 <MenuItem value={3}>Ok</MenuItem>
@@ -48,7 +51,8 @@ class SupportPage extends Component {
                                 <MenuItem value={5}>Very Good</MenuItem>
                             </Select>
 
-                            {/* <Textfield id="standard-basic" label="1-10" type="number" onChange={(event) => this.onInputChange(event, 'support')} /> */}
+                            {/* <Textfield id="standard-basic" label="1-10" type="number" onChange={(event) => 
+                                this.onInputChange(event, 'support')} /> */}
                             <Button variant="outlined" color="primary" onClick={this.onNextClick}>Next -></Button>
                         </div>
                     </Grid>
