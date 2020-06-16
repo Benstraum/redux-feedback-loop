@@ -32,7 +32,7 @@ class ReviewPage extends Component {
             data: this.props.feedback
         })
             .then((response) => {
-                console.log('post is gucci');
+                console.log('post successful!');
                 this.props.dispatch({
                     type: "RESET"
                 })
