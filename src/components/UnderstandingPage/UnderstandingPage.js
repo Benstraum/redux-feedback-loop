@@ -48,8 +48,6 @@ class UnderstandingPage extends Component {
                                 <MenuItem value={4}>Good</MenuItem>
                                 <MenuItem value={5}>Very Good</MenuItem>
                             </Select>
-                            {/* <Textfield id="standard-basic" label="1-10" type="number" onChange={(event) => 
-                                this.onInputChange(event, 'understanding')} /> */}
                             <Button variant="outlined" color="primary" onClick={this.onNextClick}>Next -></Button>
                             </div>
                     </Grid>

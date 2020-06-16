@@ -92,8 +92,6 @@ class ReviewPage extends Component {
                                      <MenuItem value={4}>Good</MenuItem>
                                      <MenuItem value={5}>Very Good</MenuItem>
                                  </Select>
-                                {/* <Textfield  id="outlined-basic" label={"change answer"} type="number" onChange={(event) => 
-                                    this.onInputChange(event, 'feeling', 'editFeel')} /> */}
                                     <Button variant="outlined" 
                                     color="secondary" 
                                     onClick={() => this.editButtonHandle('SET_FEELING', this.state.feeling)}>submit change</Button>
@@ -114,8 +112,6 @@ class ReviewPage extends Component {
                                     <MenuItem value={4}>Good</MenuItem>
                                     <MenuItem value={5}>Very Good</MenuItem>
                                 </Select>
-                                     {/* <Textfield min='0' max='10' id="outlined-basic" label="change answer" type="number" onChange={(event) => 
-                                        this.onInputChange(event, 'understanding', 'editUnderstanding')} /> */}
                                     <Button variant="outlined" 
                                     color="secondary" 
                                     onClick={() => this.editButtonHandle('SET_UNDERSTANDING', this.state.understanding)}>submit change</Button>
@@ -134,8 +130,6 @@ class ReviewPage extends Component {
                                     <MenuItem value={4}>Good</MenuItem>
                                     <MenuItem value={5}>Very Good</MenuItem>
                                 </Select>
-                                    {/* <Textfield  id="outlined-basic" label="change answer" type="number" onChange={(event) => 
-                                        this.onInputChange(event, 'support', 'editSupport')} /> */}
                                     <Button variant="outlined" 
                                     color="secondary" 
                                     onClick={() => this.editButtonHandle('SET_SUPPORT', this.state.support)}>submit change</Button >

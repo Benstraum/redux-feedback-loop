@@ -34,7 +34,7 @@ class AdminPageItem extends Component {
                     <TableCell align="left"><IconButton variant="contained" color="secondary" 
                     onClick={() => this.props.deleteButtonHandler(this.props.feedback.id)}> <DeleteIcon /></IconButton></TableCell>
                 </TableRow>
-                :   //made inline style cause I couldn't find a way to override it in css 
+                : 
                 <TableRow style={{backgroundColor: 'orange'}} className="needHelp" key={this.props.feedback.id}>
                     <TableCell scope="row">
                         response: #{this.props.feedback.id}

@@ -58,13 +58,12 @@ class App extends Component {
             <Toolbar>
             </Toolbar>
           </AppBar>
-          {/* commented out for base functionality */}
           <div className="navBar">
             <ol className="nav">
+              {/* here is the start to conditionally rendering navbar*/}
               <li >
                 <Link to="/">Home</Link>
               </li>
-
               {this.props.feedback.feeling &&
                 <li >
                   <Link to="/howAreWeFeeling">Feelings?</Link>
@@ -87,7 +86,7 @@ class App extends Component {
                 </li>}
             </ol>
           </div>
-          {/* will need to add more routes for each new component */}
+          {/* Routes for each component which passes necessary functions */}
           <Route exact path="/" component={HomePage} />
           <Route path="/howAreWeFeeling" component={(props) => <FeelingPage {...props} iNeedInfo={this.iNeedInfo} />} />
           <Route path="/howIsYourCourseWork" component={(props) => <UnderstandingPage {...props} iNeedInfo={this.iNeedInfo} />} />
