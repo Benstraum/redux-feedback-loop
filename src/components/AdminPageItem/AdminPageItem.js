@@ -29,8 +29,10 @@ class AdminPageItem extends Component {
                     <TableCell align="left">{this.props.feedback.understanding}</TableCell>
                     <TableCell align="left">{this.props.feedback.support}</TableCell>
                     <TableCell align="left">{this.props.feedback.comments}</TableCell>
-                    <TableCell align="left"><Button variant="outlined" size="small" color="primary" onClick={() => this.toggleHelp(this.props.feedback.id)} >Flag help</Button></TableCell>
-                    <TableCell align="left"><IconButton variant="contained" color="secondary" onClick={() => this.props.deleteButtonHandler(this.props.feedback.id)}> <DeleteIcon /></IconButton></TableCell>
+                    <TableCell align="left"><Button variant="outlined" size="small" color="primary" 
+                    onClick={() => this.toggleHelp(this.props.feedback.id)} >Flag help</Button></TableCell>
+                    <TableCell align="left"><IconButton variant="contained" color="secondary" 
+                    onClick={() => this.props.deleteButtonHandler(this.props.feedback.id)}> <DeleteIcon /></IconButton></TableCell>
                 </TableRow>
                 :   //made inline style cause I couldn't find a way to override it in css 
                 <TableRow style={{backgroundColor: 'orange'}} className="needHelp" key={this.props.feedback.id}>
@@ -41,8 +43,10 @@ class AdminPageItem extends Component {
                     <TableCell align="left">{this.props.feedback.understanding}</TableCell>
                     <TableCell align="left">{this.props.feedback.support}</TableCell>
                     <TableCell align="left">{this.props.feedback.comments}</TableCell>
-                    <TableCell align="left"><Button variant="outlined" size="small" color="primary" onClick={() => this.toggleHelp(this.props.feedback.id)} >Flag help</Button></TableCell>
-                    <TableCell align="left"><IconButton variant="contained" color="secondary" onClick={() => this.props.deleteButtonHandler(this.props.feedback.id)}> <DeleteIcon /></IconButton></TableCell>
+                    <TableCell align="left"><Button variant="outlined" size="small" color="primary" 
+                    onClick={() => this.toggleHelp(this.props.feedback.id)} >Flag help</Button></TableCell>
+                    <TableCell align="left"><IconButton variant="contained" color="secondary" 
+                    onClick={() => this.props.deleteButtonHandler(this.props.feedback.id)}> <DeleteIcon /></IconButton></TableCell>
                 </TableRow>}
             </>
         )
